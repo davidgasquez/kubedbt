@@ -1,0 +1,25 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: project-test
+spec:
+  schedule: "* 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: project-test
+            image: davidgasquez/dbt-project-test:1.0.0
+            volumeMounts:
+              - name: dbt-profile
+                mountPath: /home/dbt/.dbt/
+            imagePullPolicy: Always
+          restartPolicy: OnFailure
+          volumes:
+          - name: dbt-profile
+            secret:
+              secretName: dbt-profile
+              items:
+              - key: profile
+                path: profiles.yml
