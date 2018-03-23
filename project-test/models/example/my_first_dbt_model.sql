@@ -7,4 +7,4 @@
 {{ config(materialized='view') }}
 
 
-select 1 as id
+select 42 as id
