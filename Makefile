@@ -1,4 +1,4 @@
-IMAGE_TAG := $(shell git rev-parse --short HEAD)
+IMAGE_TAG := 1.0.0
 IMAGE_NAME := davidgasquez/dbt-project-test:$(IMAGE_TAG)
 PROFILES_PATH := $(PWD)/.dbt_profiles.yml
 
