@@ -1,5 +1,8 @@
 # Kubedbt
 
+[![Build Status](https://travis-ci.org/davidgasquez/kubedbt.svg?branch=master)](https://travis-ci.org/davidgasquez/kubedbt)
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 Run, schedule, and manage your [`dbt` (data build tool)](https://www.getdbt.com/) jobs using Kubernetes!
 
 ## Requirements
