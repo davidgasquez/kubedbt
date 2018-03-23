@@ -1,4 +1,4 @@
-IMAGE_TAG := 1.0.0
+IMAGE_TAG := $(shell git rev-parse --short HEAD)
 IMAGE_NAME := davidgasquez/dbt-project-test:$(IMAGE_TAG)
 PROFILES_PATH := $(PWD)/.dbt_profiles.yml
 
@@ -22,4 +22,4 @@ dev:
 	docker run -v $(PROFILES_PATH):/home/dbt/.dbt/profiles.yml-it -v $(PWD)/project-test:/dbt --rm $(IMAGE_NAME) bash
 
 deploy:
-    kubectl apply -f dbt-cronjob.yaml
+	kubectl apply -f "dbt-cronjob.yaml"
