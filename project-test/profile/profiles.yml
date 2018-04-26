@@ -1,0 +1,16 @@
+config:
+    send_anonymous_usage_stats: False
+    use_colors: True
+
+default:
+  outputs:
+    dev:
+      type: redshift
+      threads: 2
+      host: "{{ env_var('REDSHIFT_ENDPOINT') }}"
+      port: "{{ env_var('REDSHIFT_DB_PORT') }}"
+      user: "{{ env_var('REDSHIFT_USER') }}"
+      pass: "{{ env_var('REDSHIFT_PASSWORD') }}"
+      dbname: "{{ env_var('REDSHIFT_DB_NAME') }}"
+      schema: "temp"
+  target: dev
