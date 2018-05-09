@@ -14,9 +14,6 @@ run:
 push: build
 	docker push $(IMAGE_NAME)
 
-bash:
-	docker run --env-file .env -it --rm $(IMAGE_NAME) bash
-
 dev:
 	docker run -it -v $(PWD)/project-test:/dbt --env-file .env --rm $(IMAGE_NAME) bash
 
