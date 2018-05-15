@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: project-test
 spec:
-  schedule: "* 0 * * *"
+  schedule: "10 * * * *"
   jobTemplate:
     spec:
       template:
@@ -11,15 +11,31 @@ spec:
           containers:
           - name: project-test
             image: davidgasquez/dbt-project-test:1.0.0
-            volumeMounts:
-              - name: dbt-profile
-                mountPath: /home/dbt/.dbt/
+            env:
+              - name: REDSHIFT_DB_NAME
+                valueFrom:
+                  secretKeyRef:
+                    name: redshift
+                    key: database
+              - name: REDSHIFT_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: redshift
+                    key: user
+              - name: REDSHIFT_ENDPOINT
+                valueFrom:
+                  secretKeyRef:
+                    name: redshift
+                    key: endpoint
+              - name: REDSHIFT_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: redshift
+                    key: password
+              - name: REDSHIFT_DB_PORT
+                valueFrom:
+                  secretKeyRef:
+                    name: redshift
+                    key: port
             imagePullPolicy: Always
           restartPolicy: OnFailure
-          volumes:
-          - name: dbt-profile
-            secret:
-              secretName: dbt-profile
-              items:
-              - key: profile
-                path: profiles.yml

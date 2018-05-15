@@ -8,7 +8,7 @@ all: run
 build:
 	docker build -t $(IMAGE_NAME) .
 
-run:
+run: build
 	docker run --env-file .env -it --rm $(IMAGE_NAME)
 
 push: build
