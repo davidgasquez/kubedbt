@@ -17,5 +17,5 @@ push: build
 dev:
 	docker run -it -v $(PWD)/project-test:/dbt --env-file .env --rm $(IMAGE_NAME) bash
 
-deploy:
+deploy: push
 	kubectl apply -f "dbt-cronjob.yaml"
