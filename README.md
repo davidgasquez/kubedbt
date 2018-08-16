@@ -14,7 +14,7 @@ First, replace the sample project called `project-test` with yours or use this o
 The tool `dbt` also expect a `profiles.yaml` file with the connection details.
 The best option is to let `dbt` generate it from the environmental variables you can specify in the default [profile](project-test/profile/profiles.yml).
 
-If that doesn't work for you, you can also [create a prfile following the official instructions](https://docs.getdbt.com/docs/configure-your-profile) and mount it using Docker volumes ([example](https://github.com/davidgasquez/dbt-docker#getting-started)).
+If that doesn't work for you, you can also [create a profile following the official instructions](https://docs.getdbt.com/docs/configure-your-profile) and mount it using Docker volumes ([example](https://github.com/davidgasquez/dbt-docker#getting-started)).
 
 At this point, if the `dbt run` command is working locally, tweak the schedule and other parameters in `dbt-conjob.yaml`, create the proper secrets in Kubernetes and deploy with `make deploy`. This should start running your `dbt` model with your custom _schedule_!
 
